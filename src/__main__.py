@@ -35,6 +35,4 @@ if __name__ == '__main__':
     application.add_handler(CommandHandler('uptime', handler_uptime))
     application.add_handler(MessageHandler(filters.ALL, handler_message))
     application.add_handler(CallbackQueryHandler(handler_button))
-
-    application.add_error_handler(native_error_handler)
     application.run_polling()
