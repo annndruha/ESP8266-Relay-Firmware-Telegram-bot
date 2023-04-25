@@ -26,7 +26,7 @@ def error_handler(func):
             logging.error(err)
             traceback.print_tb(err.__traceback__)
             try:
-                await context.bot.send_message(chat_id=update.message.from_user.id, text=err)
+                await context.bot.send_message(chat_id=update.message.chat_id, text=str(err))
             except Exception as err:
                 logging.error("Fail to send error message:", err)
                 traceback.print_tb(err.__traceback__)
