@@ -61,7 +61,7 @@ async def handler_button(update: Update, context: CallbackContext) -> None:
     callback_data = update.callback_query.data
 
     if callback_data.startswith('switch'):
-        r = requests.get(settings.RELAY_URL + "/switch")
+        r = requests.get(settings.RELAY_URL + "/switch", timeout=3)
         text = r.text + '\n' + str(datetime.datetime.now())
         keyboard = InlineKeyboardMarkup([[InlineKeyboardButton('Switch state', callback_data='switch')]])
     else:
@@ -89,29 +89,29 @@ async def handler_message(update: Update, context: CallbackContext) -> None:
 
 @error_handler
 async def handler_switch(update: Update, context: CallbackContext) -> None:
-    r = requests.get(settings.RELAY_URL + "/switch")
+    r = requests.get(settings.RELAY_URL + "/switch", timeout=3)
     await context.bot.send_message(chat_id=update.message.chat_id, text=r.text)
 
 
 @error_handler
 async def handler_turn_on(update: Update, context: CallbackContext) -> None:
-    r = requests.get(settings.RELAY_URL + "/set?value=1")
+    r = requests.get(settings.RELAY_URL + "/set?value=1", timeout=3)
     await context.bot.send_message(chat_id=update.message.chat_id, text=r.text)
 
 
 @error_handler
 async def handler_turn_off(update: Update, context: CallbackContext) -> None:
-    r = requests.get(settings.RELAY_URL + "/set?value=0")
+    r = requests.get(settings.RELAY_URL + "/set?value=0", timeout=3)
     await context.bot.send_message(chat_id=update.message.chat_id, text=r.text)
 
 
 @error_handler
 async def handler_uptime(update: Update, context: CallbackContext) -> None:
-    r = requests.get(settings.RELAY_URL + "/uptime")
+    r = requests.get(settings.RELAY_URL + "/uptime", timeout=3)
     await context.bot.send_message(chat_id=update.message.chat_id, text=r.text)
 
 
 @error_handler
 async def handler_get_state(update: Update, context: CallbackContext) -> None:
-    r = requests.get(settings.RELAY_URL + "/get")
+    r = requests.get(settings.RELAY_URL + "/get", timeout=3)
     await context.bot.send_message(chat_id=update.message.chat_id, text=r.text)
