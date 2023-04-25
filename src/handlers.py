@@ -1,6 +1,6 @@
 # Marakulin Andrey https://github.com/Annndruha
 # 2023
-
+import datetime
 import logging
 import traceback
 
@@ -26,7 +26,7 @@ def error_handler(func):
             logging.error(err)
             traceback.print_tb(err.__traceback__)
             try:
-                await context.bot.send_message(chat_id=update.message.chat_id, text=err)
+                await context.bot.send_message(chat_id=update.message.from_user.id, text=err)
             except Exception as err:
                 logging.error("Fail to send error message:", err)
                 traceback.print_tb(err.__traceback__)
@@ -60,9 +60,9 @@ async def handler_button(update: Update, context: CallbackContext) -> None:
                  f'[{update.callback_query.message.id}] button pressed with callback_data={update.callback_query.data}')
     callback_data = update.callback_query.data
 
-    if callback_data == 'switch':
+    if callback_data.startswith('switch'):
         r = requests.get(settings.RELAY_URL + "/switch")
-        text = r.text
+        text = r.text + '\n' + str(datetime.datetime.now())
         keyboard = InlineKeyboardMarkup([[InlineKeyboardButton('Switch state', callback_data='switch')]])
     else:
         text = 'Видимо бот обновился, эту issue нельзя настроить'
