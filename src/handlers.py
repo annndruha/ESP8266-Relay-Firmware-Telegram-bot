@@ -25,6 +25,7 @@ def error_handler(func):
         except Exception as err:
             logging.error(err)
             traceback.print_tb(err.__traceback__)
+            await context.bot.send_message(chat_id=update.message.chat_id, text=err)
 
     return wrapper
 

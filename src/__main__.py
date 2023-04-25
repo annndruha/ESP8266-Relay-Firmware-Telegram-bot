@@ -10,11 +10,11 @@ from src.settings import Settings
 from src.handlers import handler_start, handler_help, handler_switch, handler_get_state, \
     handler_button, handler_turn_on, handler_turn_off, handler_uptime, native_error_handler, handler_message
 
-tg_log_handler = logging.FileHandler("tgbot_telegram_updater.log")
-tg_log_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-tg_logger = logging.getLogger('telegram.ext._updater')
-tg_logger.propagate = False
-tg_logger.addHandler(tg_log_handler)
+# tg_log_handler = logging.FileHandler("tgbot_telegram_updater.log")
+# tg_log_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+# tg_logger = logging.getLogger('telegram.ext._updater')
+# tg_logger.propagate = False
+# tg_logger.addHandler(tg_log_handler)
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
