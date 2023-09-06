@@ -22,6 +22,8 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 
+logging.getLogger("httpx").setLevel(logging.WARNING)
+
 if __name__ == '__main__':
     settings = Settings()
 

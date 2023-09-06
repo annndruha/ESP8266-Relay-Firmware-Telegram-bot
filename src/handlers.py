@@ -39,13 +39,17 @@ def error_handler(func):
 
 @error_handler
 async def handler_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.message.chat_id, text='🤖 Hi from relay bot!')
+    text = """🤖 Hi from relay bot!\n\nAvailable commands:\n/switch - Change state\n/turn_on - Turn lamp on\n""" \
+           """/turn_off - Turn lamp off\nYou can find all commands in 'Menu'"""
+    await context.bot.send_message(chat_id=update.message.chat_id, text=text)
     logging.info(f'[{update.message.from_user.id} {update.message.from_user.full_name}] call /start')
 
 
 @error_handler
 async def handler_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.message.chat_id, text='Help TBD;')
+    text = """This bot created for removed lamp control.\n\nAvailable commands:\n/switch - Change state\n""" \
+           """/turn_on - Turn lamp on\n/turn_off - Turn lamp off\nYou can find all commands in 'Menu'"""
+    await context.bot.send_message(chat_id=update.message.chat_id, text=text)
     logging.info(f'[{update.message.from_user.id} {update.message.from_user.full_name}] call /help')
 
 
