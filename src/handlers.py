@@ -10,7 +10,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackContext
 
 from src.settings import Settings
-from log_formatter import log_formatter
+from src.log_formatter import log_formatter
 
 settings = Settings()
 
