@@ -19,8 +19,9 @@ switch_keyboard = ReplyKeyboardMarkup([[KeyboardButton('Switch state')]],
 @errors_solver
 @log_formatter
 async def handler_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    text = """🤖 Hi from relay bot!\n\nAvailable commands:\n/switch - Change state\n/turn_on - Turn lamp on\n""" \
-           """/turn_off - Turn lamp off\nYou can easy find this commands in 'Menu'"""
+    text = """🤖 Hi from relay bot!\n\nAvailable commands:\n/switch - Change state\n""" \
+           """/turn_on - Turn lamp on\n/turn_off - Turn lamp off""" \
+           """\n/get_state - Get current state\n/uptime - ESP uptime"""
     await context.bot.send_message(chat_id=update.message.chat_id, text=text, reply_markup=switch_keyboard)
 
 
@@ -28,8 +29,8 @@ async def handler_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 @log_formatter
 async def handler_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = """This bot created for removed lamp control.\n\nAvailable commands:\n/switch - Change state\n""" \
-           """/turn_on - Turn lamp on\n/turn_off - Turn lamp off\nYou can easy find this commands in 'Menu'""" \
-           """\nTechnical commands:\n/get_state - Get current state\n/uptime - ESP uptime"""
+           """/turn_on - Turn lamp on\n/turn_off - Turn lamp off""" \
+           """\n/get_state - Get current state\n/uptime - ESP uptime"""
     await context.bot.send_message(chat_id=update.message.chat_id, text=text, reply_markup=switch_keyboard)
 
 
