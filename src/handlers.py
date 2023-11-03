@@ -14,12 +14,18 @@ from src.errors_solver import errors_solver
 settings = Settings()
 
 
+
+
 @errors_solver
 @log_formatter
 async def handler_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = """🤖 Hi from relay bot!\n\nAvailable commands:\n/switch - Change state\n/turn_on - Turn lamp on\n""" \
            """/turn_off - Turn lamp off\nYou can easy find this commands in 'Menu'"""
-    await context.bot.send_message(chat_id=update.message.chat_id, text=text)
+
+    switch_keyboard = ReplyKeyboardMarkup([[KeyboardButton('Switch state')],
+                                            one_time_keyboard=False,
+                                            resize_keyboard=True)
+    await context.bot.send_message(chat_id=update.message.chat_id, text=text, reply_markup=switch_keyboard)
 
 
 @errors_solver
@@ -50,6 +56,8 @@ async def handler_button(update: Update, context: CallbackContext) -> None:
 @log_formatter
 async def handler_message(update: Update, context: CallbackContext) -> None:
     keyboard = InlineKeyboardMarkup([[InlineKeyboardButton('Switch state', callback_data='switch')]])
+    if update.message.text == 'Switch state':
+        await handler_switch(update, context)
     await context.bot.send_message(chat_id=update.message.chat_id, text='Button below!', reply_markup=keyboard)
 
 
