@@ -1,6 +1,7 @@
 // Script for ESP8266 for control Relay by api requests
+// Setup:
+// In my case: ESP8266 with CH340 bootloader with physical switch between work/programming mode
 // To work check go to http://ip_of_esp
-// 
 
 #include "ESP8266WiFi.h"
 #include "ESP8266WebServer.h"
