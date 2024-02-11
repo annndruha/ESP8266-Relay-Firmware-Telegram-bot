@@ -108,7 +108,7 @@ void uptime() {
 
 
 void handleRootPath() {
-  server.send(200, "text/html", "<p>Hello from home Wi-Fi relay!</p><p>This is WebSerber on ESP-01 that controls Relay v4.0</p><p>Here you will find a <a href=\"https://github.com/SmartThinksDIY\">project site</a></p><p>Credits: <a href=\"https://annndruha.space\">annndruha.space</a></p>");
+  server.send(200, "text/html", "<p>Hello from home Wi-Fi relay!</p><p>This is WebSerber on ESP-01 that controls Relay v4.0</p><p>Here you will find a <a href=\"https://github.com/annndruha/ESP8266-Relay-Firmware-Telegram-bot\">project site</a></p><p>Credits: <a href=\"https://annndruha.space\">annndruha.space</a></p>");
 }
 
 
