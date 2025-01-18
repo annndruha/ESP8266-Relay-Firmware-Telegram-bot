@@ -90,5 +90,5 @@ async def handler_uptime(update: Update, context: CallbackContext) -> None:
 @errors_solver
 @log_formatter
 async def handler_get_state(update: Update, context: CallbackContext) -> None:
-    r = requests.get(settings.RELAY_URL + "/get", timeout=3)
+    r = requests.get(settings.RELAY_URL + "/lamp_state", timeout=3)
     await context.bot.send_message(chat_id=update.message.chat_id, text=r.text)

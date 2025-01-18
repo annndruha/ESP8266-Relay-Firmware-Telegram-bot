@@ -1,11 +1,8 @@
-version: '3.8'
-
 
 services:
-  relay_tgbot:
-    pull_policy: always
-    image: ghcr.io/smartthinksdiy/esp8266-relay-tgbot:latest
-    container_name: relay_tgbot
+  lamp_bot:
+    build: .
+    container_name: lamp_bot
     restart: always
     env_file: .env
     command: bash -c "python -m src"
